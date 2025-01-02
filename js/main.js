@@ -1,19 +1,14 @@
-//Example fetch using pokemonapi.co
-document.querySelector('button').addEventListener('click', getFetch)
+document.querySelector('button').addEventListener('click', apiRequest)
 
-function getFetch(){
-  const choice = document.querySelector('input').value
-  const url = `https://rap-names-two-zaib.onrender.com/api/${choice}`
+async function apiRequest(){
+    const rapperName = document.querySelector('input').value
+    try{
+        const response = await fetch(`https://rap-names-two-zaib.onrender.com/api/${rapperName}`)
+        const data = await response.json()
 
-  fetch(url)
-      .then(res => res.json()) // parse response as JSON
-      .then(data => {
-        console.log(data.)
-        document.querySelector("img").src = data.hdurl
-        document.querySelector("h3").innerText = data.
-      })
-      .catch(err => {
-          console.log(`error ${err}`)
-      });
+        console.log(data)
+        document.querySelector('h2').innerText = data.birthName
+    }catch(error){
+        console.log(error)
+    }
 }
-
